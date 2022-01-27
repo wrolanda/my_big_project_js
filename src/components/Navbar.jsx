@@ -1,22 +1,22 @@
-import '../App.css';
-
+import classes from './Navbar.module.css';
+console.log(classes);
 const Navbar = () => {
 	return (
-		<nav className='nav'>
-			<div>
-				<a href='#s'>Profile</a>
+		<nav className={classes.nav}>
+			<div className={classes.item}>
+				<a>Profile</a>
 			</div>
-			<div>
-				<a href='#s'>Messages</a>
+			<div className={`${classes.item} ${classes.active}`}>
+				<a>Messages</a>
 			</div>
-			<div>
-				<a href='#s'>News</a>
+			<div className={classes.item}>
+				<a>News</a>
 			</div>
-			<div>
-				<a href='#s'>Music</a>
+			<div className={classes.item}>
+				<a>Music</a>
 			</div>
-			<div>
-				<a href='#s'>Settings</a>
+			<div className={classes.item}>
+				<a>Settings</a>
 			</div>
 		</nav>
 	);

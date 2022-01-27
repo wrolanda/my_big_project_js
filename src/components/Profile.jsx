@@ -1,8 +1,8 @@
-import '../App.css';
+import classes from './Profile.module.css';
 
 const Profile = () => {
 	return (
-		<div className='content'>
+		<div className={classes.content}>
 			<div>
 				<img src='http://htmlbook.ru/files/images/layout2/6-05.png'></img>
 			</div>
@@ -14,7 +14,7 @@ const Profile = () => {
 				<div>
 					New post
 				</div>
-				<div>
+				<div className={classes.item}>
 					post 1
 				</div>
 				<div>
