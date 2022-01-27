@@ -1,3 +1,4 @@
+import MyPosts from './MyPosts/MyPosts';
 import classes from './Profile.module.css';
 
 const Profile = () => {
@@ -7,20 +8,13 @@ const Profile = () => {
 				<img src='http://htmlbook.ru/files/images/layout2/6-05.png'></img>
 			</div>
 			<div>
+				{/* <img src='https://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg'></img> */}
 				ava + description
 			</div>
-			<div>
-				My posts
-				<div>
-					New post
-				</div>
-				<div className={classes.item}>
-					post 1
-				</div>
-				<div>
-					post 2
-				</div>
-			</div>
+			<textarea></textarea>
+			<button>Add post</button>
+			<button>Remove</button>
+			<MyPosts />
 		</div>
 	);
 }
