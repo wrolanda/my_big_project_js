@@ -8,8 +8,12 @@
 }
 
 .dialogsItems .active {
-    color: white;
     background-color: lightblue;
+}
+
+.dialogsItems a {
+    text-decoration: none;
+    color: black;
 }
 
 .messages {
