@@ -3,11 +3,15 @@ import Post from './Post/Post';
 
 const MyPosts = () => {
 
-    let postData = [
+    let postsData = [
         {id: 1, message: 'Hello, World!', likesCount: '42'},
         {id: 2, message: 'It\'s my first post', likesCount: '21'},
         //{id: 3, mem: {<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}, likesCount: '10'}
+
 ]
+
+    let postsElenments = postsData
+        .map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     return (
         <div>
@@ -22,8 +26,7 @@ const MyPosts = () => {
                 <button>Remove</button>
             </div>
             <div className={classes.message}>
-                <Post message={postData[0].message} likesCount={postData[0].likesCount}/>
-                <Post message={postData[1].message} likesCount={postData[1].likesCount}/>
+                {postsElenments}
                 <Post mem={<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}
                       likesCount='10'/>
             </div>
