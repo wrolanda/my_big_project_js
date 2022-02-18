@@ -5,30 +5,14 @@ import DialogItem from "./DialogItem/DialogItem";
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
 const Dialogs = (props) => {
-
-    let dialogsData = [
-        {id: 1, name: 'Dima'},
-        {id: 2, name: 'Alexey'},
-        {id: 3, name: 'Katya'},
-        {id: 4, name: 'Nastya'},
-        {id: 5, name: 'Sasha'},
-        {id: 6, name: 'Kirill'}
-    ]
-
-    let dialogsElements = dialogsData
+    let dialogsElements = props.dialogsData
         .map(d => {
             return (
                 <DialogItem name={d.name} id={d.id}/>
             )
         });
 
-    let messagesData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hello'},
-        {id: 3, message: 'How are you?'}
-    ]
-
-    let messageElements = messagesData
+    let messageElements = props.messagesData
         .map(m => <Message message={m.message}/>);
 
     return (
