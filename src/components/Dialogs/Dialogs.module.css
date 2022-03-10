@@ -18,8 +18,13 @@
 
 .messages {
     padding: 10px;
+    vertical-align:bottom;
 }
 
-.dialog {
-
+.textarea {
+    margin-top: 80px;
+}
+.button {
+    width: 100px;
+    height: 20px;
 }

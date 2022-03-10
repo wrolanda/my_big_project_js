@@ -1,11 +1,18 @@
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import Profile from "../Profile";
+import {useRef} from "react";
 
 const MyPosts = (props) => {
 
     let postsElenments = props.postsData
         .map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+
+    const newPostElement = useRef();
+
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        alert(text);
+    }
 
     return (
         <div>
@@ -13,11 +20,10 @@ const MyPosts = (props) => {
                 <h3>My posts</h3>
             </div>
             <div>
-                <textarea></textarea>
+                <textarea ref={ newPostElement }></textarea>
             </div>
             <div className={classes.PostAddButton}>
-                <button>Add post</button>
-                <button>Remove</button>
+                <button onClick = { addPost } >Add post</button>
             </div>
             <div className={classes.message}>
                 {postsElenments}
