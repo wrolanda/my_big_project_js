@@ -10,8 +10,9 @@ const MyPosts = (props) => {
     const newPostElement = useRef();
 
     let addPost = () => {
+        debugger;
         let text = newPostElement.current.value;
-        alert(text);
+        props.addPost(text);
     }
 
     return (
@@ -26,7 +27,7 @@ const MyPosts = (props) => {
                 <button onClick = { addPost } >Add post</button>
             </div>
             <div className={classes.message}>
-                {postsElenments}
+                { postsElenments }
                 <Post mem={<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}
                       likesCount='10'/>
             </div>
