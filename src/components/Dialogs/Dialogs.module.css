@@ -1,6 +1,7 @@
 .dialogs {
     display: grid;
     grid-template-columns: 1fr 5fr;
+    position: relative;
 }
 
 .dialogsItems {
@@ -18,11 +19,13 @@
 
 .messages {
     padding: 10px;
-    vertical-align:bottom;
+    margin-bottom: 5vh;
+
 }
 
 .textarea {
-    margin-top: 80px;
+    position: absolute;
+    bottom: 0px;
 }
 .button {
     width: 100px;
