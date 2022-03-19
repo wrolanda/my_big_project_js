@@ -1,19 +1,19 @@
 import classes from './Dialogs.module.css';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import {useRef} from "react";
+import React, {useRef} from "react";
 
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogsData
+    let dialogsElements = props.dialogPage.dialogsData
         .map(d => {
             return (
                 <DialogItem className={classes.dialogItem} name={d.name} id={d.id}/>
             )
         });
 
-    let messageElements = props.messagesData
+    let messageElements = props.dialogPage.messagesData
         .map(m => <Message message={m.message}/>);
 
     const newMessageText = useRef();
@@ -21,7 +21,11 @@ const Dialogs = (props) => {
     let addMessage = () => {
         let text = newMessageText.current.value;
         props.addMessage(text);
-        newMessageText.current.value = '';
+    }
+
+    let onMessageChange = () => {
+        let text = newMessageText.current.value;
+        props.updateNewMessageText(text);
     }
 
     return (
@@ -32,8 +36,11 @@ const Dialogs = (props) => {
             <div className={classes.messages}>
                 { messageElements }
                 <div className={classes.textarea}>
-                    <textarea ref={ newMessageText }></textarea>
-                    <button onClick={ addMessage } className={classes.button}> отправить</button>
+                    <textarea onChange={onMessageChange}
+                              ref={ newMessageText }
+                              value={props.dialogPage.newMessageText}>
+                    </textarea>
+                    <button onClick={ addMessage } className={classes.button}>отправить</button>
                 </div>
             </div>
         </div>

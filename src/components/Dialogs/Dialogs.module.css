@@ -25,9 +25,10 @@
 
 .textarea {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
 }
 .button {
     width: 100px;
     height: 20px;
+    margin: 0 0 0 10px;
 }

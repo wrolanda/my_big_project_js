@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom";
 import classes from './DialogItem.module.css'
+import React from "react";
 
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
