@@ -4,18 +4,19 @@ import React, {useRef} from "react";
 
 const MyPosts = (props) => {
 
-    let postsElenments = props.postsData
+    let postsElements = props.postsData
         .map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     const newPostElement = useRef();
 
     let addPost = () => {
-        props.addPost(props.newPostText);
+        props.dispatch({type: "ADD-POST"});
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        let action = {type: "UPDATE-NEW-POST-TEXT", newText: text};
+        props.dispatch(action);
     }
 
     return (
@@ -30,7 +31,7 @@ const MyPosts = (props) => {
                 <button onClick = { addPost } >Add post</button>
             </div>
             <div className={classes.message}>
-                { postsElenments }
+                { postsElements }
                 <Post mem={<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}
                       likesCount='10'/>
             </div>

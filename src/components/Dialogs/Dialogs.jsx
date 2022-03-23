@@ -19,13 +19,13 @@ const Dialogs = (props) => {
     const newMessageText = useRef();
 
     let addMessage = () => {
-        let text = newMessageText.current.value;
-        props.addMessage(text);
+        props.dispatch({type: "ADD-MESSAGE"});
     }
 
     let onMessageChange = () => {
         let text = newMessageText.current.value;
-        props.updateNewMessageText(text);
+        let action = {type: "UPDATE-NEW-MESSAGE-TEXT", newText: text};
+        props.dispatch(action);
     }
 
     return (
