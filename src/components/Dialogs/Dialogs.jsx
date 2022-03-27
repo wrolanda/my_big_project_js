@@ -34,8 +34,10 @@ const Dialogs = (props) => {
             <div className={classes.dialogsItems}>
                 { dialogsElements }
             </div>
-            <div className={classes.messages}>
-                { messageElements }
+            <div className={classes.textcomp}>
+                <div className={classes.messages}>
+                    { messageElements }
+                </div>
                 <div className={classes.textarea}>
                     <textarea onChange={ onMessageChange }
                               value={dialogsPage.newMessageText}
