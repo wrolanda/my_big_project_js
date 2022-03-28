@@ -1,33 +1,30 @@
 import classes from './Dialogs.module.css';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import React, {useRef} from "react";
-import {SendMessageActionCreator, UpdateNewMessageTextActionCreator} from "../../redux/DialogsReducer";
+import React from "react";
 
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
 const Dialogs = (props) => {
 
-    let dialogsPage = props.store.getState().dialogsPage;
-    let dialogsElements = dialogsPage.dialogsData
-        .map(d => {
-            return (
-                <DialogItem className={classes.dialogItem} name={d.name} id={d.id}/>
-            )
+    let dialogsElements = props.dialogsPage.dialogsData
+        .map(d => {return <DialogItem
+            className={classes.dialogItem}
+            name={d.name}
+            id={d.id}/>
         });
 
-    let messageElements = dialogsPage.messagesData
+    let messageElements = props.dialogsPage.messagesData
         .map(m => <Message message={m.message}/>);
 
-    let SendMessage = () => {
-        props.dispatch(SendMessageActionCreator());
-    }
+    let onSendMessage = () => {
+        props.sendMessage();
+    };
 
     let onMessageChange = (e) => {
-        let text = e.target.value;
-        let action = UpdateNewMessageTextActionCreator(text);
-        props.dispatch(action);
-    }
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
+    };
 
     return (
         <div className={classes.dialogs}>
@@ -40,17 +37,17 @@ const Dialogs = (props) => {
                 </div>
                 <div className={classes.textarea}>
                     <textarea onChange={ onMessageChange }
-                              value={dialogsPage.newMessageText}
+                              value={props.dialogsPage.newMessageText}
                     placeholder="Enter your message">
                     </textarea>
-                    <button onClick={ SendMessage }
+                    <button onClick={ onSendMessage }
                             className={classes.button}>
                         отправить
                     </button>
                 </div>
             </div>
         </div>
-    );
-}
+    )
+};
 
 export default Dialogs;
