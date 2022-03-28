@@ -1,6 +1,6 @@
 import classes from './Navbar.module.css';
 import React from "react";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
@@ -23,7 +23,7 @@ const Navbar = () => {
 				<NavLink to ="/settings" className={setActive} >Settings</NavLink>
 			</div>
 		</nav>
-	);
-}
+	)
+};
 
 export default Navbar;
