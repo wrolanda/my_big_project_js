@@ -40,7 +40,7 @@ const Dialogs = (props) => {
                     </textarea>
                     <button onClick={ onSendMessage }
                             className={classes.button}>
-                        отправить
+                        send
                     </button>
                 </div>
             </div>
