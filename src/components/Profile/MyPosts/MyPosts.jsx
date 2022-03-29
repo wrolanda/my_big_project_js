@@ -4,7 +4,9 @@ import React from "react";
 
 const MyPosts = (props) => {
     let postsElements = props.postsData
-        .map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+        .map(p => <Post message={p.message}
+                        likesCount={p.likesCount}
+                        key={p.id}/>)
 
     let onAddPost = () => {
         props.addPost();
@@ -24,10 +26,10 @@ const MyPosts = (props) => {
                 <textarea onChange={onPostChange} value={props.newPostText}/>
             </div>
             <div className={classes.PostAddButton}>
-                <button onClick = { onAddPost } >Add post</button>
+                <button onClick={onAddPost}>Add post</button>
             </div>
             <div className={classes.message}>
-                { postsElements }
+                {postsElements}
                 <Post mem={<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}
                       likesCount='10'/>
             </div>

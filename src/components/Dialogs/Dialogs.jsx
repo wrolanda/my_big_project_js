@@ -11,11 +11,13 @@ const Dialogs = (props) => {
         .map(d => {return <DialogItem
             className={classes.dialogItem}
             name={d.name}
+            key={d.id}
             id={d.id}/>
         });
 
     let messageElements = props.dialogsPage.messagesData
-        .map(m => <Message message={m.message}/>);
+        .map(m => <Message message={m.message}
+                           key={m.id}/>);
 
     let onSendMessage = () => {
         props.sendMessage();
