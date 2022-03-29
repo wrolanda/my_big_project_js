@@ -4,7 +4,8 @@ import React from "react";
 
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
-const DialogItem = (props) => {
+const DialogItem = (props: any) => {
+
     let path = "/dialogs/" + props.id;
     return (
         <div className={classes.dialog}>

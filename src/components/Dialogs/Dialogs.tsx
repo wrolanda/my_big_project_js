@@ -3,10 +3,7 @@ import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import React from "react";
 
-const setActive = ({isActive}) => isActive ? classes.activeLink : '';
-
 const Dialogs = (props) => {
-
     let dialogsElements = props.dialogsPage.dialogsData
         .map(d => {return <DialogItem
             className={classes.dialogItem}
