@@ -1,4 +1,3 @@
-import * as React from "react";
 import classes from '../Dialogs.module.css';
 
 const Message = (props) => {
