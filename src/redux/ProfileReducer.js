@@ -3,9 +3,15 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 let initialState = {
     postsData: [
-        {id: 1, message: 'Hello, World!', likesCount: '42'},
-        {id: 2, message: 'It\'s my first post', likesCount: '21'},
-        //{id: 3, mem: {<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}, likesCount: '10'}
+        {id: 1, message: 'Hello, World!',
+                likesCount: '42',
+                imgUrl: ''},
+        {id: 2, message: 'It\'s my first post',
+                likesCount: '21',
+                imgUrl: ''},
+        {id: 3, message: 'mem',
+                likesCount: '10',
+                imgUrl: 'https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'}
     ],
     newPostText: ''
 }
@@ -16,7 +22,8 @@ const ProfileReducer = (state = initialState, action) => {
             let newPost = {
                 id: 5,
                 message: state.newPostText,
-                likesCount: 0
+                likesCount: 0,
+                imgUrl: ''
             };
             if (newPost.message !== '') {
                 return {

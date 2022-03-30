@@ -4,9 +4,11 @@ import React from "react";
 
 const MyPosts = (props) => {
     let postsElements = props.postsData
-        .map(p => <Post message={p.message}
+        .map(p => <Post key={p.id}
+                        message={p.message}
                         likesCount={p.likesCount}
-                        key={p.id}/>)
+                        imgUrl={p.imgUrl}
+                        />)
 
     let onAddPost = () => {
         props.addPost();
@@ -30,11 +32,9 @@ const MyPosts = (props) => {
             </div>
             <div className={classes.message}>
                 {postsElements}
-                <Post mem={<img src='https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'></img>}
-                      likesCount='10'/>
             </div>
         </div>
-    );
-}
+    )
+};
 
 export default MyPosts;
