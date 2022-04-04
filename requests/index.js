@@ -3,6 +3,10 @@ const pageNumberEl = document.querySelector("#page-number");
 const getImagesButton = document.querySelector("#get-images");
 const getTasksButton = document.querySelector("#get-tasks");
 
+debugger;
+//createTask('learn CSS');
+//deleteTask('ac5f8fd7-6a20-46db-ae37-f08fe8cdadba');
+updateTask('24f3338c-ae24-4d2c-9305-fa4d21b66637', 'learn qwerty');
 
 getImagesButton.addEventListener("click", () => {
 	const promise = getImages(pageNumberEl.value);
@@ -16,11 +20,6 @@ getTasksButton.addEventListener("click", () => {
 		.then(onTasksReceived);
 });
 
-createTask('text1').then((data) => {
-	debugger;
-	console.log(data);
-})
-
 function onImagesReceived(array) {
 	array.forEach(el => {
 		const img = document.createElement('img');
@@ -30,10 +29,14 @@ function onImagesReceived(array) {
 }
 
 function onTasksReceived(tasks) {
+	const result = document.querySelector('#tasks-result');
+	result.innerHTML = '';
+
 	tasks.forEach(task => {
 		const li = document.createElement('li');
 		li.innerHTML = task.title;
-		document.querySelector('#tasks-result').appendChild(li);
+		li.dataset.id = task.id;
+		result.appendChild(li);
 	});
 }
 
