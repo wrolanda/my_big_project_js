@@ -4,10 +4,7 @@ import * as axios from "axios";
 import userImg from '../../assets/images/user-default.png'
 
 class Users extends React.Component {
-
-    constructor(props) {
-        super(props);
-
+    componentDidMount() {
         axios.get("https://social-network.samuraijs.com/api/1.0/users")
             .then(response => {
                 this.props.setUsers(response.data.items);
