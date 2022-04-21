@@ -23,7 +23,6 @@ const ProfileInfo = (props) => {
                     <div>Instagram: {props.profile.contacts.instagram}</div>
                     <div>vk: {props.profile.contacts.vk}</div>
                     <div>twitter: {props.profile.contacts.twitter}</div>
-
                 </div>
             </div>
         </div>
