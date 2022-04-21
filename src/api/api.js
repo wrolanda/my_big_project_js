@@ -12,32 +12,28 @@ const instanceNoAuth = axios.create({
     baseURL: "https://social-network.samuraijs.com/api/1.0/",
 });
 
-export const usersAPI = {};
-
-export const getUsers = (currentPage = 1, pageSize = 10) => {
-    return instanceAuth.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
-        return response.data;
-    })
-};
-
-export const getProfile = (userId) => {
-    return instanceNoAuth.get(`profile/${userId}`)
-};
-
-export const authMe = () => {
-    return instanceAuth.get(`auth/me`).then(response => {
-        return response.data;
-    })
-};
-
-export const unfollowAPI = (id) => {
-    return instanceAuth.delete(`follow/${id}`).then(response => {
-        return response.data;
-    })
-};
-
-export const followAPI = (id) => {
-    return instanceAuth.post(`follow/${id}`, {}).then(response => {
-        return response.data;
-    })
+export const usersAPI = {
+    getUsers (currentPage = 1, pageSize = 10) {
+        return instanceAuth.get(`users?page=${currentPage}&count=${pageSize}`).then(response => {
+            return response.data;
+        })
+    },
+    getProfile(userId) {
+        return instanceNoAuth.get(`profile/${userId}`)
+    },
+    authMe() {
+        return instanceAuth.get(`auth/me`).then(response => {
+            return response.data;
+        })
+    },
+    unfollowAPI(id) {
+        return instanceAuth.delete(`follow/${id}`).then(response => {
+            return response.data;
+        })
+    },
+    followAPI(id) {
+        return instanceAuth.post(`follow/${id}`, {}).then(response => {
+            return response.data;
+        })
+    },
 };
