@@ -66,7 +66,7 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const updateNewPostTextActionCreator = (text) =>
     ({type: UPDATE_NEW_POST_TEXT, newText: text});
 
-export const getProfileThunkCreator = (userId) => {
+export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         if (!userId) {
