@@ -2,6 +2,7 @@ import classes from './Dialogs.module.css';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import React from "react";
+import { Navigate } from "react-router-dom";
 
 const setActive = ({isActive}) => isActive ? classes.activeLink : '';
 
@@ -28,6 +29,7 @@ const Dialogs = (props) => {
         props.updateNewMessageBody(body);
     };
 
+    if (!props.isAuth) return <Navigate to={"/login"} />
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>

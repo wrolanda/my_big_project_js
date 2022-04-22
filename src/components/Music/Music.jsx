@@ -1,11 +1,11 @@
 import classes from './Music.module.css';
 
 const Music = (props) => {
-    return (
+  return (
         <div>
             Music
         </div>
-    );
-}
+    )
+};
 
 export default Music;
