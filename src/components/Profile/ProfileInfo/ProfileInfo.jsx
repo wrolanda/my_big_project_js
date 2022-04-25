@@ -1,6 +1,7 @@
 import css from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import React from "react";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -9,9 +10,9 @@ const ProfileInfo = (props) => {
 
     return (
         <div>
-            <div className={css.header}>
-                <img src='http://htmlbook.ru/files/images/layout2/6-05.png'></img>
-            </div>
+            {/*<div className={css.header}>*/}
+            {/*    <img src='http://htmlbook.ru/files/images/layout2/6-05.png'></img>*/}
+            {/*</div>*/}
             <div className={css.descriptionBlock}>
                  {/*<img src='https://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg'></img>*/}
                 <div className={css.avatar}>
@@ -23,6 +24,9 @@ const ProfileInfo = (props) => {
                     <div>Instagram: {props.profile.contacts.instagram}</div>
                     <div>vk: {props.profile.contacts.vk}</div>
                     <div>twitter: {props.profile.contacts.twitter}</div>
+                </div>
+                <div className={css.status}>
+                    <ProfileStatus status={"Hello"}/>
                 </div>
             </div>
         </div>
