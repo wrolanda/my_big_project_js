@@ -1,4 +1,3 @@
-import {act} from "@testing-library/react";
 import {usersAPI} from "../api/api";
 
 const TOGGLE_FOLLOW = "TOGGLE_FOLLOW";
@@ -65,7 +64,7 @@ const UsersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
         default:

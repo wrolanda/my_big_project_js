@@ -26,7 +26,8 @@ const ProfileInfo = (props) => {
                     <div>twitter: {props.profile.contacts.twitter}</div>
                 </div>
                 <div className={css.status}>
-                    <ProfileStatus status={"Hello"}/>
+                    <ProfileStatus status={props.status}
+                                   updateUserStatus={props.updateUserStatus}/>
                 </div>
             </div>
         </div>

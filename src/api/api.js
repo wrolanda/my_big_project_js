@@ -18,9 +18,6 @@ export const usersAPI = {
             return response.data;
         })
     },
-    getProfile(userId) {
-        return instanceNoAuth.get(`profile/${userId}`)
-    },
     unfollowAPI(id) {
         return instanceAuth.delete(`follow/${id}`).then(response => {
             return response.data;
@@ -31,6 +28,22 @@ export const usersAPI = {
             return response.data;
         })
     },
+    getProfile(userId) {
+    console.warn("Obsolete method. Please use profileAPI object")
+        return profileAPI.getProfile(userId);
+    },
+};
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instanceNoAuth.get(`profile/${userId}`)
+    },
+    getUserStatus(userId) {
+        return instanceNoAuth.get(`profile/status/${userId}`)
+    },
+    updateStatus(status) {
+        return instanceAuth.put(`profile/status`, { status: status })
+    }
 };
 
 export const authAPI = {
