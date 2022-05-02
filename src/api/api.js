@@ -27,11 +27,7 @@ export const usersAPI = {
         return instanceAuth.post(`follow/${id}`, {}).then(response => {
             return response.data;
         })
-    },
-    getProfile(userId) {
-    console.warn("Obsolete method. Please use profileAPI object")
-        return profileAPI.getProfile(userId);
-    },
+    }
 };
 
 export const profileAPI = {

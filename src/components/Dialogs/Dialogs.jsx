@@ -2,54 +2,38 @@ import classes from './Dialogs.module.css';
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
 import React from "react";
-import { Navigate } from "react-router-dom";
-
-const setActive = ({isActive}) => isActive ? classes.activeLink : '';
+import AddMessageFormRedux from "./AddMessageFormRedux";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsPage.dialogsData
-        .map(d => {return <DialogItem
-            className={classes.dialogItem}
-            name={d.name}
-            key={d.id}
-            id={d.id}/>
-        });
+  let dialogsElements = props.dialogsPage.dialogsData
+    .map(d => {
+      return <DialogItem
+        className={classes.dialogItem}
+        name={d.name}
+        key={d.id}
+        id={d.id}/>
+    });
 
-    let messageElements = props.dialogsPage.messagesData
-        .map(m => <Message message={m.message}
-                           key={m.id}/>);
+  let messageElements = props.dialogsPage.messagesData
+    .map(m => <Message message={m.message}
+                       key={m.id}/>);
 
-    let onSendMessage = () => {
-        props.sendMessage();
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newMessageBody);
     };
 
-    let onMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageBody(body);
-    };
-
-    if (!props.isAuth) return <Navigate to={"/login"} />
-    return (
-        <div className={classes.dialogs}>
-            <div className={classes.dialogsItems}>
-                { dialogsElements }
-            </div>
-            <div className={classes.messages}>
-                { messageElements }
-                <div className={classes.textarea}>
-                    <textarea onChange={ onMessageChange }
-                              value={props.dialogsPage.newMessageText}
-                    placeholder="Enter your message">
-                    </textarea>
-                    <button onClick={ onSendMessage }
-                            className={classes.button}>
-                        send
-                    </button>
-                </div>
-            </div>
-        </div>
-    )
+  return (
+    <div className={classes.dialogs}>
+      <div className={classes.dialogsItems}>
+        {dialogsElements}
+      </div>
+      <div className={classes.messages}>
+        {messageElements}
+        <AddMessageFormRedux onSubmit={ addNewMessage } />
+      </div>
+    </div>
+  )
 };
 
 export default Dialogs;
