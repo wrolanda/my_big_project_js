@@ -1,11 +1,17 @@
 import classes from "./Dialogs.module.css";
 import {Field, reduxForm} from "redux-form";
 import React from "react";
+import {Textarea} from "../common/FormsControls/FormsControls";
+import {maxLengthCreator, required} from "../../validators/validators";
+
+const maxLength20 = maxLengthCreator(20);
 
 const AddMessageForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className={classes.textarea}>
-      <Field component="textarea" name="newMessageBody" placeholder="Enter your message"/>
+      <Field component={Textarea} name="newMessageBody"
+             validate={[required, maxLength20]}
+             placeholder="Enter your message"/>
       <button className={classes.button}>send</button>
     </form>
   )
