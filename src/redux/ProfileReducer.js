@@ -64,9 +64,6 @@ export const setUserStatus = (status) => ({type: SET_STATUS, status: status});
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
-        if (!userId) {
-            userId = 23272;
-        }
         profileAPI.getProfile(userId).then(response => {
             dispatch(setUserProfile(response.data));
             dispatch(toggleIsFetching(false));
