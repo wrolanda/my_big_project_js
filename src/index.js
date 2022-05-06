@@ -7,6 +7,10 @@ import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import {Provider} from "react-redux";
 
+// setInterval(() => {
+//   store.dispatch({type: "FAKE"})}
+//   , 1000);
+
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>

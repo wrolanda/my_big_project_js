@@ -1,6 +1,6 @@
 
 export const getUsers = (state) => {
-  return state.usersPage.users;
+  return state.usersPage.users.filter(u => true);
 }
 
 export const getPageSize = (state) => {
