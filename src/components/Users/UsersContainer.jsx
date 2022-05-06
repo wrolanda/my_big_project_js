@@ -10,6 +10,14 @@ import css from "./users.module.css"
 import Preloader from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../HOC/AuthRedirect";
 import {compose} from "redux";
+import {
+  getCurrentPage, getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getToggleFollowingProgress,
+  getTotalUsersCount,
+  getUsers
+} from "../../redux/uses-selectors";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
@@ -43,13 +51,13 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    toggleFollowingProgress: state.usersPage.toggleFollowingProgress,
-    followingInProgress: state.usersPage.followingInProgress,
+    users: getUsers(state),
+    pageSize: getPageSize(state),
+    totalUsersCount: getTotalUsersCount(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    toggleFollowingProgress: getToggleFollowingProgress(state),
+    followingInProgress: getFollowingInProgress(state),
   }
 };
 // let mapDispatchToProps = (dispatch) => {
