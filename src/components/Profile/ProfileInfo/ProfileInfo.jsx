@@ -2,6 +2,7 @@ import css from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import React from "react";
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -25,7 +26,7 @@ const ProfileInfo = (props) => {
                     <div>twitter: {props.profile.contacts.twitter}</div>
                 </div>
                 <div className={css.status}>
-                    <ProfileStatus status={props.status}
+                    <ProfileStatusWithHooks status={props.status}
                                    updateUserStatus={props.updateUserStatus}/>
                 </div>
             </div>
