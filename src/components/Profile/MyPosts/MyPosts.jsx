@@ -4,7 +4,8 @@ import React from "react";
 import AddPostFormRedux from "./AddNewPostFormRedux";
 
 const MyPosts = (props) => {
-  let postsElements = props.postsData
+  let postsElements = [...props.postsData]
+    .reverse()
     .map(p => <Post key={p.id}
                     message={p.message}
                     likesCount={p.likesCount}
