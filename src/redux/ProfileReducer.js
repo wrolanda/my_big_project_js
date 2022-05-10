@@ -1,10 +1,11 @@
-import {profileAPI, usersAPI} from "../api/api";
+import {profileAPI} from "../api/api";
 import {toggleIsFetching} from "./UsersReducer";
 
 const ADD_POST = "ADD-POST";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 const SET_STATUS = "SET_STATUS";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
     postsData: [
@@ -52,6 +53,8 @@ const ProfileReducer = (state = initialState, action) => {
             return { ...state, isFetching: action.isFetching};
         case (SET_STATUS):
             return { ...state, status: action.status};
+        case (DELETE_POST):
+            return { ...state, postsData: state.postsData.filter(p => p.id != action.postId)};
         default:
             return state;
     }
@@ -60,6 +63,7 @@ const ProfileReducer = (state = initialState, action) => {
 export const addPostActionCreator = (newPostBody) => ({type: ADD_POST, newPostBody});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUserStatus = (status) => ({type: SET_STATUS, status: status});
+export const deletePost = (postId) => ({type: DELETE_POST, postId});
 
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
