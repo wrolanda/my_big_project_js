@@ -4,30 +4,27 @@ import React from "react";
 import ProfileStatus from "./ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateUserStatus}) => {
+    if (!profile) {
         return <Preloader/>
     }
     return (
         <div>
-            {/*<div className={css.header}>*/}
-            {/*    <img src='http://htmlbook.ru/files/images/layout2/6-05.png'></img>*/}
-            {/*</div>*/}
             <div className={css.descriptionBlock}>
                  {/*<img src='https://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg'></img>*/}
                 <div className={css.avatar}>
-                    <img src={props.profile.photos.large}/>
+                    <img src={profile.photos.large}/>
                 </div>
                 <div  className={css.description}>
-                    <div>{props.profile.fullName}</div>
-                    <div>Описание: {props.profile.aboutMe}</div>
-                    <div>Instagram: {props.profile.contacts.instagram}</div>
-                    <div>vk: {props.profile.contacts.vk}</div>
-                    <div>twitter: {props.profile.contacts.twitter}</div>
+                    <div>{profile.fullName}</div>
+                    <div>Описание: {profile.aboutMe}</div>
+                    <div>Instagram: {profile.contacts.instagram}</div>
+                    <div>vk: {profile.contacts.vk}</div>
+                    <div>twitter: {profile.contacts.twitter}</div>
                 </div>
                 <div className={css.status}>
-                    <ProfileStatusWithHooks status={props.status}
-                                   updateUserStatus={props.updateUserStatus}/>
+                    <ProfileStatusWithHooks status={status}
+                                   updateUserStatus={updateUserStatus}/>
                 </div>
             </div>
         </div>

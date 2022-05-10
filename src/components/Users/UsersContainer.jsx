@@ -1,64 +1,65 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-  toggleFollow,
-  followSuccess, unfollowSuccess, toggleFollowingProgress,
-  getUsersThunkCreator, followThunkCreator, unfollowThunkCreator
+   toggleFollow,
+   followSuccess, unfollowSuccess, toggleFollowingProgress,
+   getUsersThunkCreator, followThunkCreator, unfollowThunkCreator
 } from "../../redux/UsersReducer";
 import Users from "./Users";
 import css from "./users.module.css"
 import Preloader from "../common/Preloader/Preloader";
-import {withAuthRedirect} from "../../HOC/AuthRedirect";
 import {compose} from "redux";
 import {
-  getCurrentPage, getFollowingInProgress,
-  getIsFetching,
-  getPageSize,
-  getToggleFollowingProgress,
-  getTotalUsersCount,
-  getUsers
+   getCurrentPage, getFollowingInProgress,
+   getIsFetching,
+   getPageSize,
+   getToggleFollowingProgress,
+   getTotalUsersCount,
+   getUsers
 } from "../../redux/uses-selectors";
 
 class UsersContainer extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(1, this.props.pageSize);
-  }
+   componentDidMount() {
+      const {pageSize} = this.props;
+      this.props.getUsers(1, pageSize);
+   }
 
-  onPageChanged = (pageNumber) => {
-    this.props.getUsers(pageNumber, this.props.pageSize);
-  };
+   onPageChanged = (pageNumber) => {
+      const {pageSize} = this.props;
+      this.props.getUsers(pageNumber, pageSize);
+   };
 
-  render() {
-    return (
-      <>
-        <div className={css.preloader}>
-          {this.props.isFetching ? <Preloader/> : null}
-        </div>
-        <Users totalUsersCount={this.props.totalUsersCount}
-               pageSize={this.props.pageSize}
-               currentPage={this.props.currentPage}
-               onPageChanged={this.onPageChanged}
-               users={this.props.users}
-          //toggleFollow={this.props.toggleFollow}
-               followingInProgress={this.props.followingInProgress}
-               follow={this.props.follow}
-               unfollow={this.props.unfollow}
-        />
-      </>
-    )
-  }
+   render() {
+      return (
+         <>
+            <div className={css.preloader}>
+               {this.props.isFetching ? <Preloader/> : null}
+            </div>
+            <Users totalUsersCount={this.props.totalUsersCount}
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
+               //toggleFollow={this.props.toggleFollow}
+                   followingInProgress={this.props.followingInProgress}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
+            />
+         </>
+      )
+   }
 }
 
 let mapStateToProps = (state) => {
-  return {
-    users: getUsers(state),
-    pageSize: getPageSize(state),
-    totalUsersCount: getTotalUsersCount(state),
-    currentPage: getCurrentPage(state),
-    isFetching: getIsFetching(state),
-    toggleFollowingProgress: getToggleFollowingProgress(state),
-    followingInProgress: getFollowingInProgress(state),
-  }
+   return {
+      users: getUsers(state),
+      pageSize: getPageSize(state),
+      totalUsersCount: getTotalUsersCount(state),
+      currentPage: getCurrentPage(state),
+      isFetching: getIsFetching(state),
+      toggleFollowingProgress: getToggleFollowingProgress(state),
+      followingInProgress: getFollowingInProgress(state),
+   }
 };
 // let mapDispatchToProps = (dispatch) => {
 //     return {
@@ -81,12 +82,11 @@ let mapStateToProps = (state) => {
 // };
 
 export default compose(
-  connect(mapStateToProps,
-    {
-      followSuccess, unfollowSuccess, toggleFollowingProgress,
-      getUsers: getUsersThunkCreator, follow: followThunkCreator,
-      unfollow: unfollowThunkCreator
-    }),
-  //withAuthRedirect
+   connect(mapStateToProps,
+      {
+         followSuccess, unfollowSuccess, toggleFollowingProgress,
+         getUsers: getUsersThunkCreator, follow: followThunkCreator,
+         unfollow: unfollowThunkCreator
+      }),
 )
 (UsersContainer);

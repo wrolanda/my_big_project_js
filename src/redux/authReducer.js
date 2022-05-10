@@ -1,7 +1,7 @@
 import {authAPI} from "../api/api";
-import {stopSubmit} from "redux-form"
+import {stopSubmit} from "redux-form";
 
-const SET_USER_DATA = "SET_USER_DATA";
+const SET_USER_DATA = "samurai-network/auth/auth/SET_USER_DATA";
 
 
 let initialState = {
@@ -26,34 +26,31 @@ const AuthReducer = (state = initialState, action) => {
 export const setAuthUserData = (userId, email, login, isAuth) =>
   ({type: SET_USER_DATA, payload: {userId, login, email, isAuth}});
 
-export const getAuthUserDataThunkCreator = () => (dispatch) => {
-    return authAPI.me().then(data => {
-      if (data.resultCode === 0) {
-        let {id, login, email} = data.data;
-        dispatch(setAuthUserData(id, email, login, true));
-      }
-    })
+export const getAuthUserDataThunkCreator = () => async (dispatch) => {
+  let data = await authAPI.me();
+  if (data.resultCode === 0) {
+    let {id, login, email} = data.data;
+    dispatch(setAuthUserData(id, email, login, true));
+  }
 };
 
 
-export const login = (email, password, rememberMe) => (dispatch) => {
-  authAPI.login(email, password, rememberMe).then(data => {
-    if (data.resultCode === 0) {
-      dispatch(getAuthUserDataThunkCreator())
-    } else {
-      let message = data.messages.length > 0 ? data.messages[0] : "Some error";
-      dispatch(stopSubmit("login", {_error: message}));
-    }
-  })
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  const data = await authAPI.login(email, password, rememberMe);
+  if (data.resultCode === 0) {
+    dispatch(getAuthUserDataThunkCreator())
+  } else {
+    let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+    dispatch(stopSubmit("login", {_error: message}));
+  }
 };
 
 export const logOut = () => {
-  return (dispatch) => {
-    authAPI.logOut().then(data => {
-      if (data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
-      }
-    })
+  return async (dispatch) => {
+    let data = await authAPI.logOut();
+    if (data.resultCode === 0) {
+      dispatch(setAuthUserData(null, null, null, false));
+    }
   }
 };
 
