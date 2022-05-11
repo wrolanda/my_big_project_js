@@ -1,11 +1,11 @@
 import {profileAPI} from "../api/api";
 import {toggleIsFetching} from "./UsersReducer";
 
-const ADD_POST = "ADD-POST";
-const SET_USER_PROFILE = "SET_USER_PROFILE";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
-const SET_STATUS = "SET_STATUS";
-const DELETE_POST = "DELETE_POST";
+const ADD_POST = "samurai-network/profile/ADD-POST";
+const SET_USER_PROFILE = "samurai-network/profile/SET_USER_PROFILE";
+const TOGGLE_IS_FETCHING = "samurai-network/profile/TOGGLE_IS_FETCHING";
+const SET_STATUS = "samurai-network/profile/SET_STATUS";
+const DELETE_POST = "samurai-network/profile/DELETE_POST";
 
 let initialState = {
    postsData: [
