@@ -1,10 +1,11 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {Routes, Route} from "react-router-dom";
-import {connect} from "react-redux";
+import {Routes, Route, HashRouter} from "react-router-dom";
+import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
+import store from "./redux/ReduxStore";
 
 import Music from "./components/Music/Music";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -54,6 +55,18 @@ let mapStateToProps = (state) => ({
    initialized: state.app.initialized
 });
 
-export default connect(mapStateToProps,
+const AppContainer = connect(mapStateToProps,
    {initializeApp})
 (App);
+
+const SamuraiJSApp = (props) => {
+   return (
+      <HashRouter>
+         <Provider store={store}>
+            <AppContainer/>
+         </Provider>
+      </HashRouter>
+   )
+};
+
+export default SamuraiJSApp;

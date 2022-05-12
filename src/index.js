@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import store from "./redux/ReduxStore";
-import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import {Provider} from "react-redux";
+import SamuraiJSApp from "./App";
 
 // setInterval(() => {
 //   store.dispatch({type: "FAKE"})}
@@ -13,11 +10,7 @@ import {Provider} from "react-redux";
 
     ReactDOM.render(
         <React.StrictMode>
-            <BrowserRouter>
-                <Provider store={store}>
-                    <App />
-                </Provider>
-            </BrowserRouter>
+           <SamuraiJSApp/>
         </React.StrictMode>,
         document.getElementById('root')
     )
