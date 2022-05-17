@@ -1,7 +1,6 @@
 import React from "react";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import Preloader from "../common/Preloader/Preloader";
 
 const Profile = (props) => {
    return (
@@ -10,6 +9,7 @@ const Profile = (props) => {
                       updateUserStatus={props.updateUserStatus}
                       isOwner={props.isOwner}
                       savePhoto={props.savePhoto}
+                      saveProfile={props.saveProfile}
 			/>
          <MyPostsContainer/>
       </div>

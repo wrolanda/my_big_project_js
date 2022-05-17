@@ -4,7 +4,7 @@ import withRouter from "./ProfileWithRouter"
 import {connect} from "react-redux";
 import {
    getStatusThunkCreator,
-   getUserProfileThunkCreator, savePhoto,
+   getUserProfileThunkCreator, savePhoto, saveProfile,
    setUserProfile,
    updateStatusThunkCreator
 } from "../../redux/ProfileReducer";
@@ -18,9 +18,10 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = this.props.authorizedUserId;
       }
-      if (!userId) {
-         this.props.history.push("/login");
-      }
+      // if (!userId) { don't work
+      //    debugger;
+      //     this.props.history.push("/login");
+      // }
       this.props.getProfile(userId);
       this.props.getUserStatus(userId);
    }
@@ -44,6 +45,7 @@ class ProfileContainer extends React.Component {
                      updateUserStatus={this.props.updateUserStatus}
                      isOwner={!this.props.router.params.userId}
                      savePhoto={this.props.savePhoto}
+                     saveProfile={this.props.saveProfile}
             />
          </div>
       )
@@ -66,7 +68,8 @@ export default compose(
       getProfile: getUserProfileThunkCreator,
       getUserStatus: getStatusThunkCreator,
       updateUserStatus: updateStatusThunkCreator,
-      savePhoto
+      savePhoto,
+      saveProfile
    }),
    withRouter,
    // withAuthRedirect

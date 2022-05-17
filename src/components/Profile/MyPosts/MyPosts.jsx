@@ -15,7 +15,6 @@ const MyPosts = (props) => {
   let addNewPost = (values) => {
     props.addPost(values.newPostBody);
   };
-console.log("Render");
   return (
     <div>
       <div>
