@@ -15,8 +15,8 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
    let rightPortionPageNumber = portionNumber * portionSize;
 
-   useEffect(()=>
-      setPortionNumber(Math.ceil(currentPage/portionSize)), [currentPage]);
+   useEffect(() =>
+      setPortionNumber(Math.ceil(currentPage / portionSize)), [currentPage]);
 
    return (
       <div className={css.paginator}>
@@ -26,13 +26,13 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
          }}>PREV</button>}
 
          {pages
-            .filter(p =>   p >= leftPortionPageNumber &&
-                           p <= rightPortionPageNumber)
+            .filter(p => p >= leftPortionPageNumber &&
+               p <= rightPortionPageNumber)
             .map(p => {
                return (
-                  <span className={cn({
-                     [css.selectedPage]: currentPage === p
-                  }, css.pageNumber)}
+                  <span className=
+                           {cn({[css.selectedPage]: currentPage === p},
+                              css.pageNumber)}
                         key={p}
                         onClick={(e) => {
                            onPageChanged(p);
