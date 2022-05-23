@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {Routes, Route, HashRouter} from "react-router-dom";
+import {Routes, Route, BrowserRouter} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
@@ -12,6 +12,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import {Navigate} from "react-router";
 
 const LoginPage = React.lazy(() => import('./components/Login/Login'));
 const News = React.lazy(() => import('./components/News/News'));
@@ -19,8 +20,17 @@ const Settings = React.lazy(() => import('./components/Settings/Settings'));
 
 
 class App extends React.Component {
+   catchAllUnhandledErrors = () => {
+      alert("Some error occured");
+   }
+
    componentDidMount() {
       this.props.initializeApp();
+      window.addEventListener("unhandledrejection", (this.catchAllUnhandledErrors));
+   }
+
+   componentWillUnmount() {
+      window.removeEventListener("unhandledrejection", (this.catchAllUnhandledErrors));
    }
 
    render() {
@@ -35,14 +45,16 @@ class App extends React.Component {
             <div className='app-wrapper-content'>
                <Suspense fallback={<Preloader/>}>
                   <Routes>
-                     <Route path="/dialogs/*" element={<DialogsContainer/>}/>
+                     <Route path="/" element={<Navigate to="/profile"/>}/>
                      <Route path="/profile/:userId" element={<ProfileContainer/>}/>
                      <Route path='/profile' element={<ProfileContainer/>}/>
+                     <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                      <Route path="/news" element={<News/>}/>
                      <Route path="/music" element={<Music/>}/>
                      <Route path="/users" element={<UsersContainer/>}/>
                      <Route path="/settings" element={<Settings/>}/>
                      <Route path="/login" element={<LoginPage/>}/>
+                     <Route path="*" element={<div>404 NOT FOUND</div>}/>
                   </Routes>
                </Suspense>
             </div>
@@ -61,11 +73,11 @@ const AppContainer = connect(mapStateToProps,
 
 const SamuraiJSApp = (props) => {
    return (
-      <HashRouter>
+      <BrowserRouter>
          <Provider store={store}>
             <AppContainer/>
          </Provider>
-      </HashRouter>
+      </BrowserRouter>
    )
 };
 
