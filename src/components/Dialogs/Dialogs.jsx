@@ -9,7 +9,6 @@ const Dialogs = (props) => {
   let dialogsElements = props.dialogsPage.dialogsData
     .map(d => {
       return <DialogItem
-        className={classes.dialogItem}
         name={d.name}
         key={d.id}
         id={d.id}/>

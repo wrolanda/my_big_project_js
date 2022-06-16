@@ -1,5 +1,5 @@
-import React from "react";
 import css from "./FormsControls.module.css"
+import React from "react";
 
 const Element = (Element) => ({input, meta: {error, touched}, ...props}) => {
   const hasError = error && touched;
@@ -15,3 +15,5 @@ const Element = (Element) => ({input, meta: {error, touched}, ...props}) => {
 
 export const Textarea = Element("textarea");
 export const Input = Element("input");
+
+

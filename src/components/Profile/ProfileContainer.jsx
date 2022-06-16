@@ -18,10 +18,6 @@ class ProfileContainer extends React.Component {
       if (!userId) {
          userId = this.props.authorizedUserId;
       }
-      // if (!userId) { don't work
-      //    debugger;
-      //     this.props.history.push("/login");
-      // }
       this.props.getProfile(userId);
       this.props.getUserStatus(userId);
    }
@@ -72,5 +68,5 @@ export default compose(
       saveProfile
    }),
    withRouter,
-   // withAuthRedirect
+   withAuthRedirect
 )(ProfileContainer);

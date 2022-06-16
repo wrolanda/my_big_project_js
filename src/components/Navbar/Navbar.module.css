@@ -12,3 +12,7 @@
 .item .activeLink {
 	color: cornflowerblue;
 }
+
+.settings {
+	margin: 25px 0 0 0;
+}

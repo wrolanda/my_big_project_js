@@ -10,6 +10,7 @@ const MyPosts = (props) => {
                     message={p.message}
                     likesCount={p.likesCount}
                     imgUrl={p.imgUrl}
+                    whoPostName={p.whoPostName}
     />);
 
   let addNewPost = (values) => {

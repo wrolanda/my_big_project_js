@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {Navigate} from "react-router-dom";
 import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import css from "./login.module.css"
 
 const Login = (props) => {
 
@@ -15,7 +16,7 @@ const Login = (props) => {
     return <Navigate to={"/profile"}/>
   }
   return (
-    <div>
+    <div className={css.login}>
       <h1>LOGIN</h1>
       <LoginReduxForm onSubmit={ onSubmit } captchaUrl={props.captchaUrl}/>
     </div>

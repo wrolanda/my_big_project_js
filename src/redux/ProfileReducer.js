@@ -14,17 +14,20 @@ let initialState = {
       {
          id: 1, message: 'Hello, World!',
          likesCount: '42',
-         imgUrl: ''
+         imgUrl: '',
+         whoPostName: "NikitaMitryakov",
       },
       {
          id: 2, message: 'It\'s my first post',
          likesCount: '21',
-         imgUrl: ''
+         imgUrl: '',
+         whoPostName: "NikitaMitryakov",
       },
       {
          id: 3, message: 'mem',
          likesCount: '10',
-         imgUrl: 'https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg'
+         imgUrl: 'https://cs14.pikabu.ru/post_img/big/2021/06/28/10/1624898051168416526.jpg',
+         whoPostName: "NikitaMitryakov",
       }
    ],
    profile: null,
@@ -39,7 +42,8 @@ const ProfileReducer = (state = initialState, action) => {
             id: 5,
             message: action.newPostBody,
             likesCount: 0,
-            imgUrl: ''
+            imgUrl: '',
+            whoPostName: "NikitaMitryakov"
          };
          if (newPost.message !== "") {  //don't work
             return {
