@@ -1,18 +1,24 @@
 import classes from './News.module.css';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const News = (props) => {
-  const [value, valueChange] = useState(0);
-    return (
+  const [value, setValue] = useState(0);
+
+   useEffect(() => {
+      document.title = `Вы нажали ${value} раз`;
+   });
+
+
+   return (
         <div>
           <div>
             News
           </div>
           <div>
-            {value}
-            <button onClick={() => valueChange(value + 1)}>
-              Увеличить значение на 1
+            <button onClick={() => setValue(value + 1)}>
+               Нажми на меня
             </button>
+             <p>Вы нажали {value} раз</p>
           </div>
         </div>
     );

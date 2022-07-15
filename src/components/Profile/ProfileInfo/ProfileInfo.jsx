@@ -26,7 +26,6 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
             setEditMode(false);
          }
       )
-      // console.log(formData);
    };
 
    return (

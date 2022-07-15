@@ -3,5 +3,6 @@
     height: 100px;
 }
 
-.preloader {
+.follow, .unfollow {
+    margin: 0 0 10px 0;
 }

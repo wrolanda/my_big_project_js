@@ -1,10 +1,11 @@
 .nav {
 	grid-area: n;
 	background-color: burlywood;
-	padding: 20px;
+	padding: 20px 0 0 0;
 }
 
 .item a {
+	padding: 0 0 10px 32px;
 	color: whitesmoke;
 	text-decoration: none;
 }
@@ -16,3 +17,42 @@
 .settings {
 	margin: 25px 0 0 0;
 }
+
+/*! CSS Used from: https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/themes/cirkle/assets/css/minified/bootstrap.min.css?ver=1656586681 ; media=all */
+@media all{
+	*,::after,::before{box-sizing:border-box;}
+	a{color:#007bff;text-decoration:none;background-color:transparent;}
+	a:hover{color:#0056b3;text-decoration:underline;}
+	@media print{
+		*,::after,::before{text-shadow:none!important;box-shadow:none!important;}
+		a:not(.btn){text-decoration:underline;}
+	}
+}
+/*! CSS Used from: https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/themes/cirkle/assets/css/minified/icofont.min.css?ver=1656586681 ; media=all */
+@media all{
+	[class^=icoFont-]{font-family:IcoFont!important;speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;white-space:nowrap;word-wrap:normal;direction:ltr;line-height:1;-webkit-font-feature-settings:"liga";-webkit-font-smoothing:antialiased;}
+	.icoFont-list:before{content:"\ef72";}
+}
+/*! CSS Used from: https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/themes/cirkle/assets/css/minified/style.css?ver=1656586681 ; media=all */
+@media all{
+	a{transition:all .3s ease-in-out;}
+	a{background-color:transparent;}
+	a:active,a:hover{outline:0;}
+	*,:after,:before{box-sizing:inherit;}
+	a:link,a:visited{transition:all .3s ease 0s;text-decoration:none;}
+	a:active,a:focus,a:hover{text-decoration:none;}
+	a:active,a:hover{outline:0;}
+	a{cursor:pointer;color:#2d5be3;display:inline-block;text-decoration:none;transition:all .3s ease-in-out;}
+	a:active,a:focus,a:hover{text-decoration:none;color:#111;outline:0 none;}
+	[class^=icoFont-]{line-height:inherit;}
+	.fixedSidebar .sidebarMenuWrap .sideMenu li{margin-bottom:18px;}
+	@media only screen and (max-width:767px){
+		.fixedSidebar .sidebarMenuWrap .sideMenu li{margin-bottom:5px;}
+	}
+	.fixedSidebar .sidebarMenuWrap .sideMenu .menuLink{font-size:24px;color:#8793a3;display:flex;align-items:center;padding:10px 0 10px 32px;}
+	.fixedSidebar .sidebarMenuWrap .sideMenu .menuLink i{margin-right:12px;}
+	.fixedSidebar .sidebarMenuWrap .sideMenu .menuLink .menuTitle{font-size:14px;font-weight:700;}
+	.fixedSidebar .sidebarMenuWrap .sideMenu .menuLink:hover{color:#2d5be3;}
+}
+/*! CSS Used from: Embedded */
+.fixedSidebar .sidebarMenuWrap .sideMenu .menuLink:hover{color:#2d5be3!important;}
