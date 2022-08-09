@@ -1,4 +1,4 @@
-import ProfileReducer, {addPostActionCreator, deletePost} from "./ProfileReducer";
+import ProfileReducer, {addPostActionCreator, deletePost} from "./ProfileReducer.ts";
 
 //1. test data
 let state = {

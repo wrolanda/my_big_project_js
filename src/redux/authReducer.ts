@@ -4,8 +4,15 @@ import {stopSubmit} from "redux-form";
 const SET_USER_DATA = "samurai-network/auth/auth/SET_USER_DATA";
 const GET_CAPTCHA_URL_SUCCESS = "samurai-network/auth/auth/GET_CAPTCHA_URL_SUCCESS";
 
+type InitialStateType = {
+  userId: number | null
+  email: string | null
+  login: string | null
+  isAuth: boolean
+  captchaUrl: string | null
+}
 
-let initialState = {
+let initialState: InitialStateType = {
   userId: null,
   email: null,
   login: null,
@@ -13,10 +20,10 @@ let initialState = {
   captchaUrl: null // if null, then captcha is not required
 };
 
-const AuthReducer = (state = initialState, action) => {
+const AuthReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
-    case (SET_USER_DATA):
-    case (GET_CAPTCHA_URL_SUCCESS):
+    case SET_USER_DATA:
+    case GET_CAPTCHA_URL_SUCCESS:
       return {
         ...state,
         ...action.payload
@@ -26,10 +33,30 @@ const AuthReducer = (state = initialState, action) => {
   }
 };
 
-export const setAuthUserData = (userId, email, login, isAuth) =>
-  ({type: SET_USER_DATA, payload: {userId, login, email, isAuth}});
+type SetAuthUserDataPayloadType = {
+  userId: number
+  login: string
+  email: string
+  isAuth: boolean,
+}
 
-export const getCaptchaUrlSuccess = (captchaUrl) =>
+type SetAuthUserDataType = {
+  type: typeof SET_USER_DATA,
+  payload: SetAuthUserDataPayloadType
+}
+
+export const setAuthUserData = (userId: number, email: string, login: string, isAuth: boolean): SetAuthUserDataType =>
+  ({
+    type: SET_USER_DATA,
+    payload: {userId, login, email, isAuth}
+  });
+
+type GetCaptchaUrlSuccessType = {
+  type: typeof GET_CAPTCHA_URL_SUCCESS,
+  payload: { captchaUrl: string },
+}
+
+export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessType =>
   ({type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}});
 
 export const getAuthUserDataThunkCreator = () => async (dispatch) => {
@@ -41,7 +68,7 @@ export const getAuthUserDataThunkCreator = () => async (dispatch) => {
 };
 
 
-export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
+export const login = (email: string, password: string, rememberMe: boolean, captcha: string) => async (dispatch: any) => {
   const data = await authAPI.login(email, password, rememberMe, captcha);
   if (data.resultCode === 0) {
     dispatch(getAuthUserDataThunkCreator())
@@ -68,7 +95,6 @@ export const logOut = () => {
     }
   }
 };
-
 
 
 export default AuthReducer;

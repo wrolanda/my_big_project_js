@@ -4,9 +4,16 @@ import React, {useEffect, useState} from "react";
 const News = (props) => {
   const [value, setValue] = useState(0);
 
-   useEffect(() => {
-      document.title = `Вы нажали ${value} раз`;
-   });
+   // useEffect(() => {
+   //     function Title(props) {
+   //         document.previousTitle = document.title;
+   //         document.title = `Вы нажали ${value} раз`;
+   //     }
+   //  return function cleanup() {
+   //      document.title = document.previousTitle;
+   //      document.previousTitle = undefined;
+   //  };
+   // }, []);
 
 
    return (

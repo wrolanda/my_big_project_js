@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import {connect, Provider} from "react-redux";
-import {initializeApp} from "./redux/appReducer";
+import {initializeApp} from "./redux/appReducer.ts";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/ReduxStore";
 

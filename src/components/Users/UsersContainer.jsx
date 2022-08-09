@@ -4,7 +4,7 @@ import {
    toggleFollow,
    followSuccess, unfollowSuccess, toggleFollowingProgress,
    getUsersThunkCreator, followThunkCreator, unfollowThunkCreator
-} from "../../redux/UsersReducer";
+} from "../../redux/UsersReducer.ts";
 import Users from "./Users";
 import css from "./users.module.css"
 import Preloader from "../common/Preloader/Preloader";
