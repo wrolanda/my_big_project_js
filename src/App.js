@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import {Routes, Route, BrowserRouter} from "react-router-dom";
+import {Routes, Route, BrowserRouter as Router} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {initializeApp} from "./redux/appReducer.ts";
 import Preloader from "./components/common/Preloader/Preloader";
@@ -75,11 +75,11 @@ const AppContainer = connect(mapStateToProps,
 
 const SamuraiJSApp = (props) => {
    return (
-      <BrowserRouter>
+      <Router basemname={`/${process.env.PUBLIC_URL}`}>
          <Provider store={store}>
             <AppContainer/>
          </Provider>
-      </BrowserRouter>
+      </Router>
    )
 };
 
