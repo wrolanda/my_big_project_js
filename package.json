@@ -2,7 +2,7 @@
   "name": "react_app01",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wrolanda.github.io/my_big_project_js/",
+  "homepage": "https://wrolanda.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
