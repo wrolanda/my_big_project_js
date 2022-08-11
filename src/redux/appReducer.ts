@@ -1,4 +1,4 @@
-import {getAuthUserDataThunkCreator} from "./authReducer.ts";
+import {getAuthUserDataThunkCreator} from "./authReducer";
 
 const INITIALIZED_SUCCESS = "samurai-network/app/INITIALIZED_SUCCESS";
 

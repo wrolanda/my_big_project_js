@@ -1,5 +1,5 @@
-import {authAPI, securityAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
+const { authAPI, securityAPI } = require('../api/api');
 
 const SET_USER_DATA = "samurai-network/auth/auth/SET_USER_DATA";
 const GET_CAPTCHA_URL_SUCCESS = "samurai-network/auth/auth/GET_CAPTCHA_URL_SUCCESS";
@@ -34,10 +34,10 @@ const AuthReducer = (state = initialState, action: any): InitialStateType => {
 };
 
 type SetAuthUserDataPayloadType = {
-  userId: number
-  login: string
-  email: string
-  isAuth: boolean,
+  userId: number | null
+  login: string | null
+  email: string | null
+  isAuth: boolean
 }
 
 type SetAuthUserDataType = {
@@ -45,7 +45,10 @@ type SetAuthUserDataType = {
   payload: SetAuthUserDataPayloadType
 }
 
-export const setAuthUserData = (userId: number, email: string, login: string, isAuth: boolean): SetAuthUserDataType =>
+export const setAuthUserData = (userId: number | null,
+                                email: string | null,
+                                login: string | null,
+                                isAuth: boolean): SetAuthUserDataType =>
   ({
     type: SET_USER_DATA,
     payload: {userId, login, email, isAuth}
@@ -59,7 +62,7 @@ type GetCaptchaUrlSuccessType = {
 export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessType =>
   ({type: GET_CAPTCHA_URL_SUCCESS, payload: {captchaUrl}});
 
-export const getAuthUserDataThunkCreator = () => async (dispatch) => {
+export const getAuthUserDataThunkCreator = () => async (dispatch: any) => {
   let data = await authAPI.me();
   if (data.resultCode === 0) {
     let {id, login, email} = data.data;
@@ -81,14 +84,14 @@ export const login = (email: string, password: string, rememberMe: boolean, capt
   }
 };
 
-export const getCaptchaUrl = () => async (dispatch) => {
+export const getCaptchaUrl = () => async (dispatch: any) => {
   const data = await securityAPI.getCaptchaUrl();
   const captchaUrl = data.url;
   dispatch(getCaptchaUrlSuccess(captchaUrl));
 };
 
 export const logOut = () => {
-  return async (dispatch) => {
+  return async (dispatch: any) => {
     let data = await authAPI.logOut();
     if (data.resultCode === 0) {
       dispatch(setAuthUserData(null, null, null, false));

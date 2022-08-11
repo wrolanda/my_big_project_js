@@ -1,6 +1,7 @@
-import {usersAPI} from "../api/api";
-import {updateObjectArray} from "../utils/object-helpers";
 import {UserType} from "../types/types";
+
+const { usersAPI } = require('../api/api');
+const { updateObjectArray } = require('../utils/object-helpers');
 
 const TOGGLE_FOLLOW = "samurai-network/users/TOGGLE_FOLLOW";
 const FOLLOW = "samurai-network/users/FOLLOW";
@@ -18,6 +19,7 @@ type InitialStateType = {
    currentPage: number,
    isFetching: boolean,
    followingInProgress: Array<number> //array of users ids
+   toggleFollowingProgress: Array<number>
 }
 
 let initialState: InitialStateType = {
@@ -27,6 +29,7 @@ let initialState: InitialStateType = {
    currentPage: 1,
    isFetching: false,
    followingInProgress: [],
+   toggleFollowingProgress:[],
 };
 
 const UsersReducer = (state = initialState, action:any): InitialStateType => {

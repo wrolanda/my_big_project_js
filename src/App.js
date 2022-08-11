@@ -21,7 +21,7 @@ const Settings = React.lazy(() => import('./components/Settings/Settings'));
 
 class App extends React.Component {
    catchAllUnhandledErrors = () => {
-      alert("Some error occured");
+      alert("Some error occurred");
    };
 
    componentDidMount() {
@@ -46,13 +46,14 @@ class App extends React.Component {
             <div className='app-wrapper-content'>
                <Suspense fallback={<Preloader/>}>
                   <Routes>
+                     <Route path="/my_big_project_js" element={<Navigate to="/profile"/>}/>
                      <Route path="/" element={<Navigate to="/profile"/>}/>
                      <Route path="/dialogs/*" element={<DialogsContainer/>}/>
                      <Route path="/profile/:userId" element={<ProfileContainer/>}/>
                      <Route path='/profile' element={<ProfileContainer/>}/>
                      <Route path="/news" element={<News/>}/>
                      <Route path="/music" element={<Music/>}/>
-                     <Route path="/users" element={<UsersContainer/>}/>
+                     <Route path="/users" element={<UsersContainer title='Самураи'/>}/>
                      <Route path="/settings" element={<Settings/>}/>
                      <Route path="/login" element={<LoginPage/>}/>
                      <Route path="/*" element={<div>404 NOT FOUND</div>}/>

@@ -1,7 +1,7 @@
-import {profileAPI} from "../api/api";
-import {toggleIsFetching} from "./UsersReducer.ts";
+import {toggleIsFetching} from "./UsersReducer";
 import {stopSubmit} from "redux-form";
 import {PhotosType, PostsDataType, ProfileType} from "../types/types";
+const { profileAPI } = require('../api/api');
 
 const ADD_POST = "samurai-network/profile/ADD-POST";
 const SET_USER_PROFILE = "samurai-network/profile/SET_USER_PROFILE";
